@@ -5,6 +5,7 @@ A fast, lightweight, and user-friendly URL shortening service built with Node.js
 ## Features
 
 ✨ **Core Features:**
+
 - 🔗 Create short links with auto-generated or custom alphanumeric codes (6-8 characters)
 - 📊 Dashboard to manage all your shortened URLs
 - 🎯 Meaningful code generation using adjective-noun combinations (e.g., `smartbeacon`, `happyarrow`)
@@ -51,27 +52,33 @@ A fast, lightweight, and user-friendly URL shortening service built with Node.js
 ## Installation
 
 ### Prerequisites
-- Node.js 16+ 
+
+- Node.js 16+
 - npm or yarn
 
 ### Setup
 
 1. **Clone the repository:**
+
    ```bash
    git clone https://github.com/Gokulg2401/Aganitha-Task.git
    cd Aganitha-Task
    ```
 
 2. **Install dependencies:**
+
    ```bash
    npm install
    ```
 
 3. **Set up environment variables:**
+
    ```bash
    cp .env.example .env
    ```
+
    Edit `.env` and configure:
+
    ```env
    DATABASE_URL="file:./dev.db"
    PORT=3000
@@ -79,6 +86,7 @@ A fast, lightweight, and user-friendly URL shortening service built with Node.js
    ```
 
 4. **Initialize the database:**
+
    ```bash
    npx prisma migrate dev --name init
    ```
@@ -92,16 +100,20 @@ A fast, lightweight, and user-friendly URL shortening service built with Node.js
 ## API Endpoints
 
 ### Health Check
+
 - **GET** `/healthz` - Server health status
 
 ### Link Management
+
 - **POST** `/api/links` - Create a new short link
+
   ```json
   {
     "url": "https://example.com/very/long/url",
     "code": "mycode1" // Optional: custom code (6-8 alphanumeric)
   }
   ```
+
   Response: `201 Created`
 
 - **GET** `/api/links` - List all links
@@ -114,6 +126,7 @@ A fast, lightweight, and user-friendly URL shortening service built with Node.js
   Response: `204 No Content` or `404 Not Found`
 
 ### Redirect
+
 - **GET** `/:code` - Redirect to original URL (302 redirect)
   Increments click counter and updates `lastClickedAt`
 
@@ -126,11 +139,13 @@ A fast, lightweight, and user-friendly URL shortening service built with Node.js
 ## Testing
 
 Run all tests:
+
 ```bash
 npm test
 ```
 
 Expected output:
+
 ```
 ✔ GET /healthz returns 200
 ✔ POST /api/links creates a link
@@ -143,11 +158,13 @@ Expected output:
 ## Development
 
 ### Watch Mode
+
 ```bash
 npm run dev
 ```
 
 ### Database Management
+
 ```bash
 # Open Prisma Studio
 npx prisma studio
@@ -159,6 +176,7 @@ npx prisma migrate dev --name <migration_name>
 ## Features Implemented
 
 ### Backend
+
 - ✅ Alphanumeric code generation (6-8 characters)
 - ✅ Meaningful codes using adjective-noun combinations
 - ✅ Duplicate code prevention (409 Conflict)
@@ -168,6 +186,7 @@ npx prisma migrate dev --name <migration_name>
 - ✅ Error handling and logging
 
 ### Frontend
+
 - ✅ Clean, responsive dashboard
 - ✅ Create links with auto or custom codes
 - ✅ Copy short URL to clipboard
@@ -179,6 +198,7 @@ npx prisma migrate dev --name <migration_name>
 ## Database Schema
 
 ### Link Model
+
 ```prisma
 model Link {
   id            String   @id @default(cuid())
@@ -207,6 +227,7 @@ model Link {
 ## Deployment
 
 Ready for deployment on:
+
 - Vercel
 - Render
 - Railway
@@ -214,6 +235,7 @@ Ready for deployment on:
 - Any Node.js-compatible platform
 
 ### Deployment Checklist
+
 - [ ] Set environment variables (`DATABASE_URL`, `PORT`, `BASE_URL`)
 - [ ] Run `npm install` and `npm run build` (if needed)
 - [ ] Run database migrations
@@ -233,6 +255,7 @@ MIT License - Feel free to use this project for personal or commercial purposes.
 ## Support
 
 For issues or questions:
+
 - Check existing GitHub issues
 - Create a new issue with detailed description
 - Include error logs and reproduction steps
