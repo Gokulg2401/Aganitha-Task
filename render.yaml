@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: aganitha-task
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: DATABASE_URL
+        value: file:./dev.db
+    preDeployCommand: npx prisma migrate deploy || npx prisma migrate dev --name init
