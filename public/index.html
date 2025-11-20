@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TinyLink | Modern URL Shortener</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>TinyLink</h1>
+        <p class="subtitle">
+          Shorten URLs, track clicks, and manage links with ease.
+        </p>
+      </header>
+
+      <main>
+        <!-- Create Link Card -->
+        <section class="card">
+          <form id="create-form">
+            <div class="input-group">
+              <div class="input-wrapper" style="flex: 2">
+                <label for="url-input">Destination URL</label>
+                <input
+                  type="url"
+                  id="url-input"
+                  placeholder="https://example.com/long-url"
+                  required
+                />
+              </div>
+              <div class="input-wrapper">
+                <label for="code-input">Custom Code (Optional)</label>
+                <input
+                  type="text"
+                  id="code-input"
+                  placeholder="e.g. mycode1"
+                  pattern="[a-zA-Z0-9]{6,8}"
+                  title="6-8 alphanumeric characters"
+                />
+              </div>
+              <div
+                class="input-wrapper"
+                style="flex: 0 0 auto; display: flex; align-items: flex-end"
+              >
+                <button type="submit">Shorten URL</button>
+              </div>
+            </div>
+            <div id="form-message"></div>
+          </form>
+        </section>
+
+        <!-- Links List Card -->
+        <section class="card">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 1.5rem;
+              flex-wrap: wrap;
+              gap: 1rem;
+            "
+          >
+            <h2 style="font-size: 1.5rem">Your Links</h2>
+            <div style="display: flex; gap: 1rem">
+              <button
+                onclick="fetchLinks()"
+                style="
+                  background: transparent;
+                  border: 1px solid var(--border-color);
+                  padding: 0.5rem 1rem;
+                "
+                title="Refresh Stats"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M23 4v6h-6"></path>
+                  <path d="M1 20v-6h6"></path>
+                  <path
+                    d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"
+                  ></path>
+                </svg>
+              </button>
+              <input
+                type="text"
+                id="search-input"
+                placeholder="Search links..."
+                style="width: 200px"
+              />
+            </div>
+          </div>
+
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Short Code</th>
+                  <th>Original URL</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="links-table-body">
+                <!-- Links will be injected here -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/js/app.js"></script>
+  </body>
+</html>
