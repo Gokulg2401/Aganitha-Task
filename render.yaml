@@ -3,7 +3,7 @@ services:
     name: aganitha-task
     env: node
     plan: free
-    buildCommand: npm install
+    buildCommand: npm install && npx prisma generate && npx prisma db push --skip-generate
     startCommand: npm start
     envVars:
       - key: NODE_ENV
@@ -12,4 +12,4 @@ services:
         value: 3000
       - key: DATABASE_URL
         value: file:./dev.db
-    preDeployCommand: npx prisma migrate deploy || npx prisma migrate dev --name init
+    preDeployCommand: npx prisma migrate deploy --skip-generate || npx prisma db push --skip-generate

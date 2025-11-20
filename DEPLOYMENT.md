@@ -7,6 +7,7 @@ This file documents how to deploy TinyLink to Netlify (frontend + serverless fun
 **Best for:** Full Node.js backend + persistent database
 
 ### Steps:
+
 1. Push your code to GitHub (✅ done)
 2. Go to https://dashboard.render.com
 3. Click "New +" → "Web Service"
@@ -27,6 +28,7 @@ This file documents how to deploy TinyLink to Netlify (frontend + serverless fun
 **Best for:** Static frontend + serverless API functions
 
 ### Limitations:
+
 - Netlify's free tier has function execution time limits (10s)
 - SQLite persists in memory during execution (data may be lost between requests)
 - Better for CI/CD + preview deployments
@@ -34,6 +36,7 @@ This file documents how to deploy TinyLink to Netlify (frontend + serverless fun
 ### Alternative: Full-Stack on Netlify with Node.js Adapter
 
 If you want to deploy full stack on Netlify, you'd need:
+
 1. Wrap Express app with serverless-http adapter
 2. Add `netlify.toml` configuration
 3. Convert to serverless functions
@@ -52,6 +55,7 @@ Would require converting Express to Vercel Functions (less straightforward).
 ## Recommended: Render
 
 ✅ **Why Render is best for TinyLink:**
+
 - Supports full Node.js + Express
 - Persistent SQLite database on disk
 - Free tier available (with limitations)
@@ -89,6 +93,7 @@ After deploying to Render:
 ## Database Migrations on Deploy
 
 The `render.yaml` includes a `preDeployCommand` that runs migrations automatically:
+
 ```bash
 npx prisma migrate deploy || npx prisma migrate dev --name init
 ```
@@ -112,15 +117,18 @@ This ensures your database schema is up-to-date on every deploy.
 ## Troubleshooting
 
 ### 500 Error on Deploy
+
 - Check Render logs: Dashboard → Your Service → Logs
 - Ensure all environment variables are set
 - Verify Prisma migrations ran successfully
 
 ### Database Not Found
+
 - Check `DATABASE_URL` is set to `file:./dev.db`
 - Run migrations manually in Render shell (if needed)
 
 ### Port Issues
+
 - Render sets `PORT` automatically; don't override it
 - Your app reads from `process.env.PORT || 3000` ✅ (already correct)
 
