@@ -5,7 +5,7 @@ const app = require('../src/app');
 const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
-const PORT = 3001;
+const PORT=3001;
 
 let server;
 let baseUrl;

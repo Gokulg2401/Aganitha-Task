@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     createForm.addEventListener("submit", handleCreateLink);
     searchInput.addEventListener("input", handleSearch);
     // Removed auto-refresh - only fetch when user interacts
-  } else {
+  } else{
     // Stats page logic
     const code = currentPath.split("/").pop();
     console.log(

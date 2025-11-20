@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 // Routes
 app.use('/api/links', apiRoutes);
-app.use('/', indexRoutes);
+app.use('/',indexRoutes);
 
 // Error handling
 app.use((err, req, res, next) => {
@@ -34,5 +34,4 @@ if (require.main === module) {
     console.log(`Server running on http://localhost:${PORT}`);
   });
 }
-
-module.exports = app;
+module.exports=app;
